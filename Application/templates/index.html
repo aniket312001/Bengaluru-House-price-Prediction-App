@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block title %} House Information {% endblock %}
+
+{% block body %}
+
+    <div class="container">
+      <div class="row">
+        <div class="card mt-50" style="width: 100%; height: 100%;">
+
+          <div class="card-header">
+            <div class="col-12" style="text-align: center;">
+              <h1>Welcome To House Price Predictor</h1>
+            </div>
+          </div>
+
+            <div class="card-body">
+
+                <form action="/predict" method="POST" accept-charset="utf-8">
+
+
+                    <div class="col-10 form-group" style="text-align: center;">
+                        <label for="a_type"><b>Area Type</b></label>
+                        <select name="a_type" class="selectpicker form-control" id="a_type" required="1" >
+                        
+                        {% for area_type in area_types %}
+                            <option value="{{ area_type }}">{{ area_type }}</option>
+                        {% endfor %}
+
+                        </select>
+                    </div>
+
+                    <br>
+                    <div class="col-10 form-group" style="text-align: center;">
+                        <label for="loc"><b>Select Location:</b></label>
+                        <select name="loc" class="selectpicker form-control" id="loc" required="1">
+                        
+                        {% for location in locations %}
+                            <option value="{{ location }}">{{ location }}</option>
+                        {% endfor %}
+
+
+                        </select>
+                    </div>
+
+
+                    <br>
+                    <div class="col-10 form-group" style="text-align: center;">
+                        <label for="bath_room"><b>Select Number Bathroom:</b></label>
+                        <select name="bath_room" class="selectpicker form-control" id="bath_room" required="1">
+
+                        {% for bath in baths %}
+                            <option value="{{ bath }}">{{ bath }}</option>
+                        {% endfor %}
+
+                        </select>
+                    </div>
+
+
+                    <br>
+                    <div class="col-10 form-group" style="text-align: center;">
+                        <label for="balcony"><b>Select Number balcony:</b></label>
+                        <select name="my_balcony" class="selectpicker form-control" id="my_balcony" required="1">
+
+                        {% for balcony in balconies %}
+                            <option value="{{ balcony }}">{{ balcony }}</option>
+                        {% endfor %}
+
+                        </select>
+                    </div>
+
+                    
+                    <br>
+                    <div class="col-10 form-group" style="text-align: center;">
+                        <label for="fuel"><b>Select Number BHK:</b></label>
+                        <select name="bhk" class="selectpicker form-control" id="bhk" required="1">
+
+                        {% for bhk in BHK %}
+                            <option value="{{ bhk }}">{{ bhk }}</option>
+                        {% endfor %}
+
+                        </select>
+                    </div>
+
+                    
+                    <br>
+                    <div class="col-10 form-group" style="text-align: center;">
+                        <label for="total_sqft"><b>Enter Total_sqft :</b></label>
+                        <input type="text" class="form-control" id="total_sqft" name="total_sqft">
+                    </div>
+                    <br>
+                    
+
+
+                    <div class="col-10 form-group" style="text-align: center;">
+                        <button class="btn btn-primary form-control">Predict Price</button>
+                    </div>
+
+
+
+                </form>
+                <br>
+
+
+            </div>
+
+        </div>
+      </div>
+    </div>
+
+{% endblock %}
+
+    
+<!-- area_type,location,total_sqft,bath,balcony,price,BHK/ -->
